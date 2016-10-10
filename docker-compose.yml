@@ -1,0 +1,32 @@
+version: '2'
+services:
+  nginx:
+    build: nginx
+    depends_on:
+      - fpm
+    ports:
+      - "80:80"
+    volumes_from:
+      - fpm
+
+  fpm:
+    build: fpm
+    depends_on:
+      - mysql
+      - solr
+
+  solr:
+    image: solr:6.2-alpine
+
+  redis:
+    image: redis:3.2-alpine
+
+  mysql:
+    image: mysql:5.7
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_DATABASE=ddd
+    volumes:
+      - db_data:/var/lib/mysql
+volumes:
+  db_data:
