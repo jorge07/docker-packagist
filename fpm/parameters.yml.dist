@@ -21,7 +21,7 @@ parameters:
     redis_dsn_test: redis://redis
     redis_session_dsn: redis://redis
 
-    solr_host: slor
+    solr_host: solr
     solr_port: 8983
     solr_path: /solr
     solr_core: collection1

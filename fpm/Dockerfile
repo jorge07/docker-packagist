@@ -8,8 +8,11 @@ RUN mkdir /tmp_pr && tar zxvf /tmp/master.tar.gz -C /tmp_pr && mv /tmp_pr/packag
 
 COPY parameters.yml.dist /app/app/config/parameters.yml
 
-RUN composer install --no-ansi --no-dev --no-interaction --no-progress --optimize-autoloader
+RUN composer install --no-ansi --no-dev --no-interaction --no-progress --optimize-autoloader \
+    && php app/console c:w && app/console a:i web
 
-RUN php app/console c:w && app/console a:i web
+COPY config/crontab /var/spool/cron/crontabs/packagist
+
+RUN crontab /var/spool/cron/crontabs/packagist
 
 VOLUME /app/web

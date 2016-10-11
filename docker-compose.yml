@@ -16,7 +16,7 @@ services:
       - solr
 
   solr:
-    image: solr:6.2-alpine
+    build: solr
 
   redis:
     image: redis:3.2-alpine

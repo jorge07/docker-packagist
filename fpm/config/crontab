@@ -1,0 +1,4 @@
+* * * * * /app/app/console packagist:update --no-debug --env=prod > /dev/null 2>&1
+* * * * * /app/app/console packagist:dump --no-debug --env=prod > /dev/null 2>&1
+* * * * * /app/app/console packagist:index --no-debug --env=prod --force > /dev/null 2>&1
+0 2 * * * /app/app/console packagist:stats:compile --no-debug --env=prod > /dev/null 2>&1
