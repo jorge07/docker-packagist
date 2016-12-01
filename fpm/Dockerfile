@@ -12,7 +12,6 @@ RUN composer install --no-ansi --no-dev --no-interaction --no-progress --optimiz
     && php app/console c:w && app/console a:i web
 
 COPY config/crontab /var/spool/cron/crontabs/packagist
-COPY config/crontab /var/spool/cron/crontabs/packagist
 COPY config/supervisor/supervisor.conf /etc/supervisor/conf.d/supervisord.conf
 
 EXPOSE 9000
